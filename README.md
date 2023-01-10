@@ -13,7 +13,7 @@ The goal of this project is to develop a feature for Victron Energy to take into
 2. Add `node-red-dashboard` to palette (2)
 
 <p align="center">
-    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_1.png" height=10%>
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_1.png" width=20%>
 </p>
 
 3. Select the install tab (3)
