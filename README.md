@@ -6,7 +6,7 @@ Work in progres.
 
 ### Purpose
 
-The goal of this project is to develop a feature for Victron Energy to take into account the dynamic tariff prices in the decision to store energy or to return energy to the grid. These dynamic tariff prices are nowadays offered by various energy providers (Easy Energy, ANWB, TIBR, and others) and are always announced a day in advance (also known as the day-ahead pricing model). The feature will control the grid setpoint as its main output. The goal is to implement this feature in VRM. This Node-RED implementation is for testing purposes. 
+The objective of this project is to create a new feature for Victron Energy that takes into consideration the fluctuating rates of energy tariffs when determining whether to store energy or return it to the grid. These dynamic tariffs are currently offered by various energy providers, such as Easy Energy, ANWB, TIBR, and others. They are typically announced one day prior to taking effect, which is known as the day-ahead pricing model. The main output of this feature will be the control of the grid setpoint. The ultimate goal is to integrate this feature into VRM, and this Node-RED implementation is intended for testing purposes.
 
 ### Install
 1. Click on Menu (1)
@@ -70,7 +70,7 @@ Unfortunately we have to do a small work-around to deal with a Node-RED quirk.
     <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_8.png" width=40% height=40%>
 </p>
 
-18. Click the `Run first time manually` node
+18. Click the `Run first time manually` node (15)
 
 <p align="center">
     <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_9.png" width=40% height=40%>
@@ -82,43 +82,46 @@ Unfortunately we have to do a small work-around to deal with a Node-RED quirk.
     <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_10.png" width=40% height=40%>
 </p>
 
+### Features
 
+<p align="center">
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_10.png" width=40% height=40%>
+</p>
 
-### Config
-
-1. Enter ENTSO-e key in both ENTSO-e functions
-2. Run `first time manually` node
+1. The sell threshold setting determines at what point the grid setpoint will be set to a positive value and the battery will begin discharging and returning energy to the grid when the sell switch (4) is enabled. The default value for this setting is -3000 watts.
+2. The buy threshold works in a similar manner as the sell threshold, with the key difference being that when the current price is equal to or lower than this value, the battery will begin charging. The default value for this setting is 3000 watts.
+3. The buy switch enables the battery to charge and buy energy from the grid when the current price is low.
+4. The sell switch determines if the battery will discharge and sell energy to the grid when the current price is high.
+5. The disable charge switch enables a feature that prevents PV power from flowing into the battery.
+6. The Charge/Buy button, when clicked, causes the battery to charge with maximum power and power is purchased from the grid.
+7. The Discharge/Sell button, when clicked, causes the battery to discharge with maximum power and power is sold to the grid.
+8. The Auto button, when clicked, will set the grid setpoint to its default value.
+9. The Hide Tomorrow Prices switch allows you to toggle on/off the visibility of the prices for the next day. When turned on, the prices for tomorrow will be hidden.
 
 ### To do
-* Retrieve prices from multiple energy providers:
-  * ~~ENTSOE API~~ (done)  
-  * ANWB
-  * Easy Energy
-  * TIBR
-* ~~Plot chart~~ (done)
-* ~~ADD MQTT functionality through VRM~~ (done)
-* Implement multiple charge scenarios 
-  * ~~Simple charge when prices are X% lower then average~~ (done)
-  * ~~Simple charge when prices are X% lower then average, discharge when prices are X% higher then average~~ (done)
-  * Always charge in X lowest tariff hours. (In this cases prices will be sorted in ascending order, first X hours will be used for charging)
-  * Above scenarios including PV forecast. SoC will be lower in the morning so there is capacity left for PV charging. 
-* Add SoC limits for charge and discharge
-* Implement logging
-* ~~Implement scheduler~~ (done)
-* Implement PV forecast
-
-
-
-
+* Obtain prices from various energy providers:
+    * ENTSOE API (completed)
+    * ANWB
+    * Easy Energy
+    * TIBR
+* Create a chart (completed)
+* Develop different charging strategies:
+    * Simple charging when prices are X% lower than average (completed)
+    * Simple charging when prices are X% lower than average and discharge when prices are X% higher than average (completed)
+    * Always charge during the X lowest tariff hours. (For this, prices will be sorted in ascending order, and the first X hours will be used for charging)
+    * Implement the above scenarios with PV forecast. The SoC will be lower in the morning, providing capacity for PV charging.
+* Add State of Charge limits for charging and discharging.
+* Implement logging feature
+* Set up a scheduler (completed)
+* Incorporate PV forecast.
 
 ### Run 
 
 * Click deploy
 * Go to `<<your-node-red-ip>>:1883/ui`
 
-
 ### Settings
-* `lowChargeLimit` this is the threshold used to start charging. Default = 0.8, charging starts in this case 20% below daily average
+* Sell this is the threshold used to start charging. Default = 0.8, charging starts in this case 20% below daily average
 * `highThreshold` = Constant to set the high threshold for selling. Default =1.2. Only used in Mode 2
 
 
@@ -127,4 +130,5 @@ You need an ENTSO-e Restful API key if you want to collect the data from ENTSO-e
 
 ### Schedule
 * Get prices is scheduled every day at 00:00:00.
+* Prices for next day are retreived at 15:00:00.
 * The ESS controller is scheduled every 5 minutes. If the charge requirement did change an MQTT message will be published. Otherwise nothing will happen.
