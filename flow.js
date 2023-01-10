@@ -2112,14 +2112,14 @@
                 "y": 80,
                 "wires": [
                     {
-                        "id": "c8472be928ea07db"
+                        "id": "a5be48e1df0df24f"
                     }
                 ]
             }
         ],
         "out": [
             {
-                "x": 340,
+                "x": 500,
                 "y": 40,
                 "wires": [
                     {
@@ -2153,7 +2153,7 @@
         "max": "200",
         "step": "1",
         "className": "",
-        "x": 200,
+        "x": 360,
         "y": 80,
         "wires": [
             [
@@ -2181,7 +2181,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
+        "x": 600,
         "y": 80,
         "wires": [
             []
@@ -2200,7 +2200,7 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 680,
+        "x": 840,
         "y": 120,
         "wires": []
     },
@@ -2215,11 +2215,30 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
+        "x": 570,
         "y": 120,
         "wires": [
             [
                 "e2502c2a274a6062"
+            ]
+        ]
+    },
+    {
+        "id": "a5be48e1df0df24f",
+        "type": "function",
+        "z": "c924e5cc0239c51d",
+        "name": "Load Setting",
+        "func": "msg.payload = parseInt(global.get(\"lowThreshold\"))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 80,
+        "wires": [
+            [
+                "c8472be928ea07db"
             ]
         ]
     },
@@ -2235,7 +2254,7 @@
                 "y": 120,
                 "wires": [
                     {
-                        "id": "9539306e6f8b53bb"
+                        "id": "bd4ea4e22573a6b5"
                     }
                 ]
             }
@@ -2276,7 +2295,7 @@
         "max": "200",
         "step": "1",
         "className": "",
-        "x": 200,
+        "x": 360,
         "y": 120,
         "wires": [
             [
@@ -2345,6 +2364,25 @@
         "x": 900,
         "y": 80,
         "wires": []
+    },
+    {
+        "id": "bd4ea4e22573a6b5",
+        "type": "function",
+        "z": "d044b83b45d931ad",
+        "name": "Load Setting",
+        "func": "msg.payload = parseInt(global.get(\"highThreshold\"))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "9539306e6f8b53bb"
+            ]
+        ]
     },
     {
         "id": "125fd8f9b1f138e4",
@@ -2602,7 +2640,9 @@
             "55b975bc5a12ceea",
             "7fff0d2f5bc61dd3",
             "52a2658ea031d9d2",
-            "cf31648bdaacbbf0"
+            "cf31648bdaacbbf0",
+            "3567fa9da71a609a",
+            "52a795e99e561568"
         ],
         "x": 535,
         "y": 260,
@@ -2619,7 +2659,9 @@
             "7fff0d2f5bc61dd3",
             "b9d09a50cfa4ef57",
             "52a2658ea031d9d2",
-            "cf31648bdaacbbf0"
+            "cf31648bdaacbbf0",
+            "3567fa9da71a609a",
+            "52a795e99e561568"
         ],
         "x": 415,
         "y": 1540,
@@ -2760,7 +2802,8 @@
             "f1773a22de7aef03",
             "dc12facd8d5f36aa",
             "68f25ff0f858052a",
-            "36f73bc464f1bd65"
+            "36f73bc464f1bd65",
+            "da7f48834e60fcdc"
         ],
         "x": 245,
         "y": 560,
@@ -3252,7 +3295,8 @@
         "links": [
             "68f25ff0f858052a",
             "f1773a22de7aef03",
-            "36f73bc464f1bd65"
+            "36f73bc464f1bd65",
+            "da7f48834e60fcdc"
         ],
         "x": 245,
         "y": 1340,
@@ -4400,7 +4444,7 @@
         "type": "function",
         "z": "69b0f382c122b574",
         "name": "Init flow",
-        "func": "global.set(\"highThreshold\", \"140\")\nglobal.set(\"lowThreshold\", \"60\");\nglobal.set(\"defaultGridSetpoint\", \"30\");\nglobal.set(\"chargeGridSetpoint\", \"3000\");\nglobal.set(\"dischargeGridSetpoint\", \"-3000\");\n\n\nreturn msg;",
+        "func": "global.set(\"highThreshold\", \"140\")\nglobal.set(\"lowThreshold\", \"60\");\nglobal.set(\"defaultGridSetpoint\", \"30\");\nglobal.set(\"chargeGridSetpoint\", \"3000\");\nglobal.set(\"dischargeGridSetpoint\", \"-3000\");\nmsg.payload = \"\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4421,11 +4465,10 @@
         "name": "Threshold changed",
         "mode": "link",
         "links": [
-            "b9d09a50cfa4ef57",
-            "55b975bc5a12ceea",
-            "7fff0d2f5bc61dd3",
             "52a2658ea031d9d2",
-            "cf31648bdaacbbf0"
+            "b9d09a50cfa4ef57",
+            "3567fa9da71a609a",
+            "52a795e99e561568"
         ],
         "x": 625,
         "y": 80,
@@ -4518,6 +4561,25 @@
         ]
     },
     {
+        "id": "50ea009cae825b0a",
+        "type": "comment",
+        "z": "69b0f382c122b574",
+        "name": "Gird setpoint settings",
+        "info": "",
+        "x": 100,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "48871103b1d75b3a",
+        "type": "subflow:396988ab08b74eca",
+        "z": "69b0f382c122b574",
+        "name": "",
+        "x": 160,
+        "y": 1700,
+        "wires": []
+    },
+    {
         "id": "ce8bb3bae0187f68",
         "type": "victron-output-ess",
         "z": "69b0f382c122b574",
@@ -4583,28 +4645,30 @@
         },
         "initial": "",
         "name": "",
-        "x": 1030,
+        "x": 1070,
         "y": 420,
         "wires": []
     },
     {
-        "id": "50ea009cae825b0a",
-        "type": "comment",
+        "id": "52a795e99e561568",
+        "type": "link in",
         "z": "69b0f382c122b574",
-        "name": "Gird setpoint settings",
-        "info": "",
-        "x": 100,
-        "y": 1660,
-        "wires": []
-    },
-    {
-        "id": "48871103b1d75b3a",
-        "type": "subflow:396988ab08b74eca",
-        "z": "69b0f382c122b574",
-        "name": "",
-        "x": 160,
-        "y": 1700,
-        "wires": []
+        "name": "Conditions changed sell",
+        "links": [
+            "441f94a47c2e47d6",
+            "f1773a22de7aef03",
+            "dc12facd8d5f36aa",
+            "68f25ff0f858052a",
+            "36f73bc464f1bd65",
+            "da7f48834e60fcdc"
+        ],
+        "x": 45,
+        "y": 260,
+        "wires": [
+            [
+                "c9425e6077a55ae7"
+            ]
+        ]
     },
     {
         "id": "444dc33479b4fd26",
