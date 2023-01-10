@@ -10,15 +10,15 @@ The goal of this project is to develop a feature for Victron Energy to take into
 
 ### Install
 1. Click on Menu (1)
-2. Add `node-red-dashboard` to palette (2)
+2. Click `Manage palette` (2)
 
 <p align="center">
     <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_1.png" width=30%>
 </p>
 
-3. Select the install tab (3)
+3. Select the Install tab (3)
 4. Search for `node-red-dashboard` (4)
-5. Click install button (5)
+5. Click Install button (5)
 
 <p align="center">
     <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_2.png" width=40%>
@@ -42,8 +42,23 @@ The goal of this project is to develop a feature for Victron Energy to take into
 11. Deploy the flow (10)
 
 <p align="center">
-    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_t.png" width=40% height=40%>
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_5.png" width=40% height=40%>
 </p>
+
+11. Double click the `Retrieve prices from ENTSO-e` node (11 and 12)
+
+<p align="center">
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_6.png" width=40% height=40%>
+</p>
+
+13. Fill in the ENTSO-e key (13)
+14. Click Done
+
+<p align="center">
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_.png" width=40% height=40%>
+</p>
+
+
 
 
 
