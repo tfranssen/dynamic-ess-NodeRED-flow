@@ -13,7 +13,7 @@ The goal of this project is to develop a feature for Victron Energy to take into
 2. Add `node-red-dashboard` to palette (2)
 
 <p align="center">
-    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_1.png" width=20%>
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_1.png" width=30%>
 </p>
 
 3. Select the install tab (3)
@@ -21,14 +21,14 @@ The goal of this project is to develop a feature for Victron Energy to take into
 5. Click install button (5)
 
 <p align="center">
-    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_2.png" width=40% >
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_2.png" width=40%>
 </p>
 
 6. Open the menu again
 7. Click import (6)
 
 <p align="center">
-    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_3.png" width=40% height=40%>
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_3.png" width=30%>
 </p>
 
 8. Paste the JSON file `https://raw.githubusercontent.com/tfranssen/dynamic-ess-NodeRED-flow/main/flow.js` in the textbox (7)
@@ -44,8 +44,6 @@ The goal of this project is to develop a feature for Victron Energy to take into
 <p align="center">
     <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_t.png" width=40% height=40%>
 </p>
-
-
 
 
 
