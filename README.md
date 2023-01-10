@@ -55,10 +55,32 @@ The goal of this project is to develop a feature for Victron Energy to take into
 14. Click Done
 
 <p align="center">
-    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_.png" width=40% height=40%>
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_7.png" width=40% height=40%>
 </p>
 
+Unfortunately we have to do a small work-around to deal with a Node-RED quirk.
 
+13. Search the `MultiPlus-II 48/3000/35-32 | Disable charge` node (14)
+14. Cut this node so it disappears using `ctrl-x` or `cmd-x`
+15. Past the node to the same location using `crtl-v` or `cmd-v`
+16. Connect the wire again
+17. Deploy the flow again
+
+<p align="center">
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_8.png" width=40% height=40%>
+</p>
+
+18. Click the `Run first time manually` node
+
+<p align="center">
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_9.png" width=40% height=40%>
+</p>
+
+19. Go to `<<your-node-red-ip>>:1883/ui` 
+
+<p align="center">
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_10.png" width=40% height=40%>
+</p>
 
 
 
