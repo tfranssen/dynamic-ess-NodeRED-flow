@@ -120,11 +120,6 @@ Unfortunately we have to do a small work-around to deal with a Node-RED quirk.
 * Click deploy
 * Go to `<<your-node-red-ip>>:1883/ui`
 
-### Settings
-* Sell this is the threshold used to start charging. Default = 0.8, charging starts in this case 20% below daily average
-* `highThreshold` = Constant to set the high threshold for selling. Default =1.2. Only used in Mode 2
-
-
 ### ENTSO-e API Access
 You need an ENTSO-e Restful API key if you want to collect the data from ENTSO-e. To request this API key, register on the Transparency Platform `https://transparency.entsoe.eu/` and send an email to `transparency@entsoe.eu` with `Restful API access` in the subject line. Indicate the email address you entered during registration in the email body.
 
