@@ -9,16 +9,11 @@ Work in progres.
 The goal of this project is to develop a feature for Victron Energy to take into account the dynamic tariff prices in the decision to store energy or to return energy to the grid. These dynamic tariff prices are nowadays offered by various energy providers (Easy Energy, ANWB, TIBR, and others) and are always announced a day in advance (also known as the day-ahead pricing model). The feature will control the grid setpoint as its main output. The goal is to implement this feature in VRM. This Node-RED implementation is for testing purposes. 
 
 ### Install
-
-<p align="center">
-    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_1.png" width=40% height=40%>
-</p>
-
 1. Click on Menu (1)
 2. Add `node-red-dashboard` to palette (2)
 
 <p align="center">
-    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_2.png" width=40% height=40%>
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_1.png" width=40% height=40%>
 </p>
 
 3. Select the install tab (3)
@@ -26,14 +21,14 @@ The goal of this project is to develop a feature for Victron Energy to take into
 5. Click install button (5)
 
 <p align="center">
-    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_3.png" width=40% height=40%>
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_2.png" width=40% height=40%>
 </p>
 
 6. Open the menu again
 7. Click import (6)
 
 <p align="center">
-    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_4.png" width=40% height=40%>
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_3.png" width=40% height=40%>
 </p>
 
 8. Paste the JSON file `https://raw.githubusercontent.com/tfranssen/dynamic-ess-NodeRED-flow/main/flow.js` in the textbox (7)
@@ -46,8 +41,9 @@ The goal of this project is to develop a feature for Victron Energy to take into
 10. Click the UI:Dynamic ESS flow tab (9)
 11. Deploy the flow (10)
 
-
-
+<p align="center">
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_t.png" width=40% height=40%>
+</p>
 
 
 
