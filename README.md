@@ -9,16 +9,16 @@ Work in progres.
 The objective of this project is to create a new feature for Victron Energy that takes into consideration the fluctuating rates of energy tariffs when determining whether to store energy or return it to the grid. These dynamic tariffs are currently offered by various energy providers, such as Easy Energy, ANWB, TIBR, and others. They are typically announced one day prior to taking effect, which is known as the day-ahead pricing model. The main output of this feature will be the control of the grid setpoint. The ultimate goal is to integrate this feature into VRM, and this Node-RED implementation is intended for testing purposes.
 
 ### Install
-1. Click on Menu (1)
-2. Click `Manage palette` (2)
+1. Click on the `Menu` button (1)
+2. Click on the `Manage Palette` option (2)
 
 <p align="center">
     <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_1.png" width=30%>
 </p>
 
 3. Select the Install tab (3)
-4. Search for `node-red-dashboard` (4)
-5. Click Install button (5)
+4. Search for `node-red-dashboard` in the search bar (4)
+5. Click the Install button (5)
 
 <p align="center">
     <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_2.png" width=40%>
@@ -85,31 +85,31 @@ Unfortunately we have to do a small work-around to deal with a Node-RED quirk.
 ### Features
 
 <p align="center">
-    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_10.png" width=40% height=40%>
+    <img src="https://github.com/tfranssen/dynamic-ess-NodeRED-flow/raw/main/img/install_11.png" width=40% height=40%>
 </p>
 
-1. The sell threshold setting determines at what point the grid setpoint will be set to a positive value and the battery will begin discharging and returning energy to the grid when the sell switch (4) is enabled. The default value for this setting is -3000 watts.
-2. The buy threshold works in a similar manner as the sell threshold, with the key difference being that when the current price is equal to or lower than this value, the battery will begin charging. The default value for this setting is 3000 watts.
-3. The buy switch enables the battery to charge and buy energy from the grid when the current price is low.
-4. The sell switch determines if the battery will discharge and sell energy to the grid when the current price is high.
-5. The disable charge switch enables a feature that prevents PV power from flowing into the battery.
-6. The Charge/Buy button, when clicked, causes the battery to charge with maximum power and power is purchased from the grid.
-7. The Discharge/Sell button, when clicked, causes the battery to discharge with maximum power and power is sold to the grid.
-8. The Auto button, when clicked, will set the grid setpoint to its default value.
-9. The Hide Tomorrow Prices switch allows you to toggle on/off the visibility of the prices for the next day. When turned on, the prices for tomorrow will be hidden.
+1. Sell threshold setting determines at what point the grid setpoint will be set to a positive value and the battery will begin discharging and returning energy to the grid when the sell switch (4) is enabled. The default value for this setting is -3000 watts.
+2. Buy threshold works in a similar manner as the sell threshold, with the key difference being that when the current price is equal to or lower than this value, the battery will begin charging. The default value for this setting is 3000 watts.
+3. Buy switch enables the battery to charge and buy energy from the grid when the current price is low.
+4. Sell switch determines if the battery will discharge and sell energy to the grid when the current price is high.
+5. Disable charge switch enables a feature that prevents PV power from flowing into the battery.
+6. Charge/Buy button, when clicked, causes the battery to charge with maximum power and power is purchased from the grid.
+7. Discharge/Sell button, when clicked, causes the battery to discharge with maximum power and power is sold to the grid.
+8. Auto button, when clicked, will set the grid setpoint to its default value.
+9. Hide Tomorrow Prices switch allows you to toggle on/off the visibility of the prices for the next day. When turned on, the prices for tomorrow will be hidden.
 
 ### To do
-* Obtain prices from various energy providers:
+* Gather pricing information from various energy providers such as:
     * ENTSOE API (completed)
     * ANWB
     * Easy Energy
     * TIBR
-* Create a chart (completed)
+* Create a visual representation of the prices via a chart (completed)
 * Develop different charging strategies:
-    * Simple charging when prices are X% lower than average (completed)
-    * Simple charging when prices are X% lower than average and discharge when prices are X% higher than average (completed)
+    * Charge the battery when prices are lower than average (completed)
+    * Charge when prices are lower than average, and discharge when prices are higher than average (completed)
     * Always charge during the X lowest tariff hours. (For this, prices will be sorted in ascending order, and the first X hours will be used for charging)
-    * Implement the above scenarios with PV forecast. The SoC will be lower in the morning, providing capacity for PV charging.
+    * Implement the above scenarios with PV forecast. The SoC will be kept lower in the morning, providing capacity for PV charging.
 * Add State of Charge limits for charging and discharging.
 * Implement logging feature
 * Set up a scheduler (completed)
