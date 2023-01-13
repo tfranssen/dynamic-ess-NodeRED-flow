@@ -8,6 +8,11 @@ Work in progres.
 
 The objective of this project is to create a new feature for Victron Energy that takes into consideration the fluctuating rates of energy tariffs when determining whether to store energy or return it to the grid. These dynamic tariffs are currently offered by various energy providers, such as Easy Energy, ANWB, TIBR, and others. They are typically announced one day prior to taking effect, which is known as the day-ahead pricing model. The main output of this feature will be the control of the grid setpoint. The ultimate goal is to integrate this feature into VRM, and this Node-RED implementation is intended for testing purposes.
 
+### Prerequisites
+* Venus OS Large (latest release, not latest candidate)
+* ESS setup configured
+* ESS mode set to: Optimized (with or without Batterylife)
+
 ### Install
 1. Click on the `Menu` button (1)
 2. Click on the `Manage Palette` option (2)
