@@ -12,34 +12,6 @@
         "color": "#DDAA99"
     },
     {
-        "id": "fcab063ea0f93116",
-        "type": "ui_numeric",
-        "z": "396988ab08b74eca",
-        "name": "",
-        "label": "Default grid setpoint",
-        "tooltip": "",
-        "group": "f23c9e84918328ca",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "wrap": false,
-        "passthru": false,
-        "topic": "payload",
-        "topicType": "msg",
-        "format": "{{value}}",
-        "min": "-3000",
-        "max": "3000",
-        "step": "10",
-        "className": "",
-        "x": 460,
-        "y": 80,
-        "wires": [
-            [
-                "c4ed33733596b75c"
-            ]
-        ]
-    },
-    {
         "id": "c4ed33733596b75c",
         "type": "change",
         "z": "396988ab08b74eca",
@@ -85,7 +57,7 @@
         "y": 80,
         "wires": [
             [
-                "fcab063ea0f93116"
+                "d23df0abc5d18831"
             ]
         ]
     },
@@ -115,34 +87,6 @@
         ]
     },
     {
-        "id": "94ee2a939780128f",
-        "type": "ui_numeric",
-        "z": "396988ab08b74eca",
-        "name": "",
-        "label": "Charge grid setpoint",
-        "tooltip": "",
-        "group": "f23c9e84918328ca",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "wrap": false,
-        "passthru": false,
-        "topic": "payload",
-        "topicType": "msg",
-        "format": "{{value}}",
-        "min": "-3000",
-        "max": "3000",
-        "step": "10",
-        "className": "",
-        "x": 460,
-        "y": 120,
-        "wires": [
-            [
-                "aa0a1c3ffd1d2bf4"
-            ]
-        ]
-    },
-    {
         "id": "e4a51cee2c43a7e0",
         "type": "inject",
         "z": "396988ab08b74eca",
@@ -163,7 +107,7 @@
         "y": 120,
         "wires": [
             [
-                "94ee2a939780128f"
+                "73081a8039e83a30"
             ]
         ]
     },
@@ -193,34 +137,6 @@
         ]
     },
     {
-        "id": "51aa2bdff739748b",
-        "type": "ui_numeric",
-        "z": "396988ab08b74eca",
-        "name": "",
-        "label": "Discharge grid setpoint",
-        "tooltip": "",
-        "group": "f23c9e84918328ca",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "wrap": false,
-        "passthru": false,
-        "topic": "payload",
-        "topicType": "msg",
-        "format": "{{value}}",
-        "min": "-3000",
-        "max": "3000",
-        "step": "10",
-        "className": "",
-        "x": 470,
-        "y": 160,
-        "wires": [
-            [
-                "46abf473406716be"
-            ]
-        ]
-    },
-    {
         "id": "ba999d3b634281e3",
         "type": "inject",
         "z": "396988ab08b74eca",
@@ -241,7 +157,85 @@
         "y": 160,
         "wires": [
             [
-                "51aa2bdff739748b"
+                "b2aaa26f53f096cb"
+            ]
+        ]
+    },
+    {
+        "id": "d23df0abc5d18831",
+        "type": "ui_text_input",
+        "z": "396988ab08b74eca",
+        "name": "",
+        "label": "Default grid setpoint",
+        "tooltip": "",
+        "group": "f23c9e84918328ca",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 460,
+        "y": 80,
+        "wires": [
+            [
+                "c4ed33733596b75c"
+            ]
+        ]
+    },
+    {
+        "id": "73081a8039e83a30",
+        "type": "ui_text_input",
+        "z": "396988ab08b74eca",
+        "name": "",
+        "label": "Charge grid setpoint",
+        "tooltip": "",
+        "group": "f23c9e84918328ca",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 460,
+        "y": 120,
+        "wires": [
+            [
+                "aa0a1c3ffd1d2bf4"
+            ]
+        ]
+    },
+    {
+        "id": "b2aaa26f53f096cb",
+        "type": "ui_text_input",
+        "z": "396988ab08b74eca",
+        "name": "",
+        "label": "Discharge grid setpoint",
+        "tooltip": "",
+        "group": "f23c9e84918328ca",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 470,
+        "y": 160,
+        "wires": [
+            [
+                "46abf473406716be"
             ]
         ]
     },
@@ -302,7 +296,7 @@
         "type": "function",
         "z": "3ddbaacb440977a1",
         "name": "Calculate gridpoint",
-        "func": "let averagePrice = global.get(\"averagePrice\")\nlet currentPrice = global.get(\"currentPrice\")\nlet lowThreshold = global.get(\"lowThreshold\")\nlet highThreshold = global.get(\"highThreshold\")\nlet sellOption = global.get(\"sellOption\")\nlet buyOption = global.get(\"buyOption\")\nlet essModeAuto = global.get(\"essModeAuto\")\nlet defaultGridSetpoint = parseInt(global.get(\"defaultGridSetpoint\"))\nlet chargeGridSetpoint = parseInt(global.get(\"chargeGridSetpoint\"))\nlet dischargeGridSetpoint = parseInt(global.get(\"dischargeGridSetpoint\"))\n\nlet gridSetpoint = 0\nif (essModeAuto) { \n    if (currentPrice < averagePrice*(lowThreshold/100) && buyOption) {\n        //Set grid setpoint to charge\n        gridSetpoint = chargeGridSetpoint\n        msg.state = \"Dynamic ESS Charge\"\n        msg.reason = \"Current price is below buy threshold\"\n    } else if (currentPrice > averagePrice*(highThreshold/100) && sellOption) {\n        //Set grid setpoint to discharge\n        gridSetpoint = dischargeGridSetpoint\n        msg.state = \"Dynamic ESS Discharge\"\n        msg.reason = \"Current price is above sell threshold\"\n\n    } else {\n        gridSetpoint = defaultGridSetpoint\n        msg.state = \"Dynamic ESS Normal\"\n        msg.reason = \"Current price is between sell and buy threshold\"        \n    }\n    msg.payload = gridSetpoint;\n} else {\n    msg.state = \"Manual\"\n}\n    msg.essModeAuto = essModeAuto;\nreturn msg;",
+        "func": "let averagePrice = global.get(\"averagePrice\")\nlet currentPrice = global.get(\"currentPrice\")\nlet lowThreshold = global.get(\"lowThreshold\")\nlet highThreshold = global.get(\"highThreshold\")\nlet minSoC = global.get(\"minSoC\")\nlet currentSoC = global.get(\"currentSoC\")\nlet sellOption = global.get(\"sellOption\")\nlet buyOption = global.get(\"buyOption\")\nlet essModeAuto = global.get(\"essModeAuto\")\nlet defaultGridSetpoint = parseInt(global.get(\"defaultGridSetpoint\"))\nlet chargeGridSetpoint = parseInt(global.get(\"chargeGridSetpoint\"))\nlet dischargeGridSetpoint = parseInt(global.get(\"dischargeGridSetpoint\"))\nlet gridSetpoint = 0\nlet lowThresholdStaticEnabled = global.get(\"lowThresholdStaticEnabled\");\nlet lowThresholdStatic = global.get(\"lowThresholdStatic\");\nlet thresholdPrice = 0;\n\nif (lowThresholdStaticEnabled) {\n    thresholdPrice = lowThresholdStatic;    \n\n} else {\n    thresholdPrice = averagePrice*lowThreshold/100;\n}\n\nif (essModeAuto) { \n    if (currentPrice < thresholdPrice && buyOption) {\n        //Set grid setpoint to charge\n        gridSetpoint = chargeGridSetpoint\n        msg.state = \"Dynamic ESS Charge\"\n        msg.reason = \"Current price is below buy threshold\"\n    } else if (currentPrice > averagePrice*(highThreshold/100) && sellOption) {\n        //Set grid setpoint to discharge\n        gridSetpoint = dischargeGridSetpoint\n        msg.state = \"Dynamic ESS Discharge\"\n        msg.reason = \"Current price is above sell threshold\"\n\n    } else {\n        gridSetpoint = defaultGridSetpoint\n        msg.state = \"Dynamic ESS Normal\"\n        msg.reason = \"Current price is between sell and buy threshold\"        \n    }\n    msg.payload = gridSetpoint;\n} else {\n    msg.state = \"Manual\"\n}\nmsg.essModeAuto = essModeAuto;\n\nif (parseFloat(currentSoC) <= parseFloat(minSoC)) {\n    msg.state = \"Disabled\"\n    msg.reason = \"Current SoC < Minimal SoC\"\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -392,55 +386,37 @@
                 ]
             }
         ],
-        "out": [],
+        "out": [
+            {
+                "x": 360,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "56ecf79efc3c4ae7",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
         "env": [],
         "meta": {},
         "color": "#DDAA99"
     },
     {
-        "id": "42623ea064f85308",
-        "type": "ui_gauge",
-        "z": "053f8fb5c49da8f8",
-        "name": "",
-        "group": "444dc33479b4fd26",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "SoC",
-        "label": "%",
-        "format": "{{value}}%",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#c83838",
-            "#e6e600",
-            "#00a600"
-        ],
-        "seg1": "20",
-        "seg2": "40",
-        "className": "",
-        "x": 390,
-        "y": 80,
-        "wires": []
-    },
-    {
         "id": "56ecf79efc3c4ae7",
         "type": "function",
         "z": "053f8fb5c49da8f8",
-        "name": "Round SoC value",
-        "func": "msg.payload = Math.round(msg.payload * 100) / 100\nreturn msg;",
+        "name": "Store SoC value",
+        "func": "msg.payload = Math.round(msg.payload * 100) / 100\nglobal.set(\"currentSoC\", msg.payload)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 190,
+        "x": 180,
         "y": 80,
         "wires": [
-            [
-                "42623ea064f85308"
-            ]
+            []
         ]
     },
     {
@@ -460,27 +436,21 @@
                 ]
             }
         ],
-        "out": [],
+        "out": [
+            {
+                "x": 380,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "f60c84d9522282b6",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
         "env": [],
         "meta": {},
         "color": "#DDAA99"
-    },
-    {
-        "id": "ff8037921920ba49",
-        "type": "ui_text",
-        "z": "a7fdb19ad7bb67c7",
-        "group": "444dc33479b4fd26",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Min. SoC",
-        "format": "{{msg.payload}}%",
-        "layout": "row-spread",
-        "className": "",
-        "x": 400,
-        "y": 80,
-        "wires": []
     },
     {
         "id": "f60c84d9522282b6",
@@ -504,9 +474,7 @@
         "x": 200,
         "y": 80,
         "wires": [
-            [
-                "ff8037921920ba49"
-            ]
+            []
         ]
     },
     {
@@ -521,19 +489,7 @@
                 "y": 160,
                 "wires": [
                     {
-                        "id": "8beb3692911ac729"
-                    },
-                    {
-                        "id": "7c300723c70a8359"
-                    },
-                    {
-                        "id": "e41c9042d3e3e497"
-                    },
-                    {
-                        "id": "c8732f3a7c0531eb"
-                    },
-                    {
-                        "id": "530ff08b3f66e8af"
+                        "id": "42aebf00762140e8"
                     }
                 ]
             }
@@ -554,8 +510,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 210,
-        "y": 80,
+        "x": 590,
+        "y": 40,
         "wires": [
             [
                 "d3cc36afcc149e42"
@@ -600,8 +556,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 430,
-        "y": 80,
+        "x": 810,
+        "y": 40,
         "wires": [
             []
         ]
@@ -611,14 +567,14 @@
         "type": "function",
         "z": "9e692a50a8bce875",
         "name": "Create Chart data",
-        "func": "const priceArray=RED.util.cloneMessage(global.get(\"pArrayTomorrow\"));\nlet buyHours = [...priceArray]\nlet labels=[];\nlet averagePrice = global.get(\"averagePrice\");\nlet lowThreshold = global.get(\"lowThreshold\");\nlet buyOption = global.get(\"buyOption\");\nfor (let i = 0; i < priceArray.length; i++) {\n    if (buyHours[i] >= (averagePrice*lowThreshold/100) || !buyOption) {\n        buyHours[i] = 0\n    }\n}\n\nfor (let i = 0; i < priceArray.length; i++) {\n    hoursLabel = (\"0\" + i).slice(-2) +\":00 - \"+ (\"0\" + String(i+1)).slice(-2)+\":00\";\n    //hoursLabel = (\"0\" + i).slice(-2) +\":00\"\n    labels.push(hoursLabel)\n}\n\nm = {\n    \"series\": [\"Prices\"],\n    \"data\": [buyHours],\n    \"labels\":labels\n}\nreturn {payload:[m]};",
+        "func": "const priceArray=RED.util.cloneMessage(global.get(\"pArrayTomorrow\"));\nlet buyHours = [...priceArray]\nlet labels=[];\nlet averagePrice = global.get(\"averagePrice\");\nlet lowThreshold = global.get(\"lowThreshold\");\nlet buyOption = global.get(\"buyOption\");\nlet lowThresholdStaticEnabled = global.get(\"lowThresholdStaticEnabled\");\nlet lowThresholdStatic = global.get(\"lowThresholdStatic\");\nlet thresholdPrice = 0;\n\nif (lowThresholdStaticEnabled) {\n    thresholdPrice = lowThresholdStatic;    \n\n} else {\n    thresholdPrice = averagePrice*lowThreshold/100;\n}\n\nfor (let i = 0; i < priceArray.length; i++) {\n    if (buyHours[i] >= thresholdPrice || !buyOption) {\n        buyHours[i] = 0\n    }\n}\n\nfor (let i = 0; i < priceArray.length; i++) {\n    hoursLabel = (\"0\" + i).slice(-2) +\":00 - \"+ (\"0\" + String(i+1)).slice(-2)+\":00\";\n    //hoursLabel = (\"0\" + i).slice(-2) +\":00\"\n    labels.push(hoursLabel)\n}\n\nm = {\n    \"series\": [\"Prices\"],\n    \"data\": [buyHours],\n    \"labels\":labels\n}\nreturn {payload:[m]};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 210,
-        "y": 160,
+        "x": 590,
+        "y": 120,
         "wires": [
             [
                 "55948d302db1b637"
@@ -636,8 +592,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 210,
-        "y": 120,
+        "x": 590,
+        "y": 80,
         "wires": [
             [
                 "423b9fb2dd8309db"
@@ -682,8 +638,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 440,
-        "y": 120,
+        "x": 820,
+        "y": 80,
         "wires": [
             []
         ]
@@ -726,8 +682,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 440,
-        "y": 160,
+        "x": 820,
+        "y": 120,
         "wires": [
             []
         ]
@@ -737,14 +693,14 @@
         "type": "function",
         "z": "9e692a50a8bce875",
         "name": "Get Average",
-        "func": "let priceArray=[];\npriceArray=global.get(\"pArrayTomorrow\");\n\nlet sum = 0;\nfor (let number of priceArray) {\n    sum += number;\n}\nlet average = sum / priceArray.length;\naverage = parseFloat(average.toFixed(2))\nglobal.set(\"averagePriceTomorrow\", average);\nmsg.payload = \"€\" + average.toFixed(2);\nreturn msg;",
+        "func": "const priceArray=RED.util.cloneMessage(global.get(\"pArrayTomorrow\"));\n\nlet sum = 0;\nfor (let number of priceArray) {\n    sum += number;\n}\nlet average = sum / priceArray.length;\naverage = parseFloat(average.toFixed(2))\nglobal.set(\"averagePriceTomorrow\", average);\nmsg.payload = \"€\" + average.toFixed(2);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 190,
-        "y": 240,
+        "x": 570,
+        "y": 160,
         "wires": [
             [
                 "7bd56a644834638a"
@@ -764,8 +720,8 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 400,
-        "y": 240,
+        "x": 780,
+        "y": 160,
         "wires": []
     },
     {
@@ -781,8 +737,8 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 390,
-        "y": 200,
+        "x": 770,
+        "y": 240,
         "wires": []
     },
     {
@@ -823,8 +779,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 430,
-        "y": 280,
+        "x": 810,
+        "y": 200,
         "wires": [
             []
         ]
@@ -840,13 +796,126 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 210,
-        "y": 280,
+        "x": 590,
+        "y": 200,
         "wires": [
             [
                 "d89fd6a3631cb698"
             ]
         ]
+    },
+    {
+        "id": "313dba59e8b4335c",
+        "type": "function",
+        "z": "9e692a50a8bce875",
+        "name": "Create Chart data",
+        "func": "msg.payload = \"\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 300,
+        "wires": [
+            [
+                "d3cc36afcc149e42",
+                "423b9fb2dd8309db",
+                "55948d302db1b637",
+                "7bd56a644834638a",
+                "d89fd6a3631cb698"
+            ]
+        ]
+    },
+    {
+        "id": "5f123b2b6fd8e1b4",
+        "type": "function",
+        "z": "9e692a50a8bce875",
+        "name": "Set title",
+        "func": "msg.payload = \"No prices\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 340,
+        "wires": [
+            [
+                "d7baec143a898e24"
+            ]
+        ]
+    },
+    {
+        "id": "42aebf00762140e8",
+        "type": "switch",
+        "z": "9e692a50a8bce875",
+        "name": "",
+        "property": "retrievePricesTomorrow",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "8beb3692911ac729",
+                "7c300723c70a8359",
+                "e41c9042d3e3e497",
+                "c8732f3a7c0531eb",
+                "530ff08b3f66e8af",
+                "4785a89a5e3b3e65"
+            ],
+            [
+                "313dba59e8b4335c",
+                "5f123b2b6fd8e1b4",
+                "a9fc09162ddb8cfa"
+            ]
+        ]
+    },
+    {
+        "id": "4785a89a5e3b3e65",
+        "type": "function",
+        "z": "9e692a50a8bce875",
+        "name": "Set title",
+        "func": "msg.payload = \"\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 240,
+        "wires": [
+            [
+                "d7baec143a898e24"
+            ]
+        ]
+    },
+    {
+        "id": "a9fc09162ddb8cfa",
+        "type": "debug",
+        "z": "9e692a50a8bce875",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 380,
+        "wires": []
     },
     {
         "id": "a440f0d34547d68c",
@@ -871,19 +940,7 @@
                 "y": 160,
                 "wires": [
                     {
-                        "id": "0ae21520ce01dd11"
-                    },
-                    {
-                        "id": "0ed7fa1016760397"
-                    },
-                    {
-                        "id": "da6749e58481a394"
-                    },
-                    {
-                        "id": "7a2b24e12085c9b4"
-                    },
-                    {
-                        "id": "fe7044be6820aae1"
+                        "id": "5507eca159989f14"
                     }
                 ]
             }
@@ -904,7 +961,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 210,
+        "x": 510,
         "y": 80,
         "wires": [
             [
@@ -918,7 +975,7 @@
         "z": "9aeb46777da2b817",
         "name": "",
         "group": "f3bb1bf385ceb211",
-        "order": 10,
+        "order": 3,
         "width": 0,
         "height": 0,
         "label": "Prices",
@@ -950,7 +1007,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 450,
+        "x": 750,
         "y": 80,
         "wires": [
             []
@@ -967,7 +1024,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 210,
+        "x": 510,
         "y": 160,
         "wires": [
             [
@@ -981,7 +1038,7 @@
         "z": "9aeb46777da2b817",
         "name": "",
         "group": "f3bb1bf385ceb211",
-        "order": 10,
+        "order": 4,
         "width": 0,
         "height": 0,
         "label": "Sell hours",
@@ -1013,7 +1070,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 460,
+        "x": 760,
         "y": 160,
         "wires": [
             []
@@ -1024,13 +1081,13 @@
         "type": "function",
         "z": "9aeb46777da2b817",
         "name": "Create Chart data",
-        "func": "const priceArray=RED.util.cloneMessage(global.get(\"pArray\"));\nlet buyHours = [...priceArray]\nlet labels=[];\nlet averagePrice = global.get(\"averagePrice\");\nlet lowThreshold = global.get(\"lowThreshold\");\nlet buyOption = global.get(\"buyOption\");\nfor (let i = 0; i < priceArray.length; i++) {\n    if (buyHours[i] >= (averagePrice*lowThreshold/100) || !buyOption) {\n        buyHours[i] = 0\n    }\n}\n\nfor (let i = 0; i < priceArray.length; i++) {\n    hoursLabel = (\"0\" + i).slice(-2) +\":00 - \"+ (\"0\" + String(i+1)).slice(-2)+\":00\";\n    //hoursLabel = (\"0\" + i).slice(-2) +\":00\"\n    labels.push(hoursLabel)\n}\n\nm = {\n    \"series\": [\"Prices\"],\n    \"data\": [buyHours],\n    \"labels\":labels\n}\nreturn {payload:[m]};",
+        "func": "const priceArray=RED.util.cloneMessage(global.get(\"pArray\"));\nlet buyHours = [...priceArray]\nlet labels=[];\nlet averagePrice = global.get(\"averagePrice\");\nlet lowThreshold = global.get(\"lowThreshold\");\nlet buyOption = global.get(\"buyOption\");\n\nlet lowThresholdStaticEnabled = global.get(\"lowThresholdStaticEnabled\");\nlet lowThresholdStatic = global.get(\"lowThresholdStatic\");\nlet thresholdPrice = 0;\n\nif (lowThresholdStaticEnabled) {\n    thresholdPrice = lowThresholdStatic;    \n\n} else {\n    thresholdPrice = averagePrice*lowThreshold/100;\n}\n\nfor (let i = 0; i < priceArray.length; i++) {\n    if (buyHours[i] >= thresholdPrice || !buyOption) {\n        buyHours[i] = 0\n    }\n}\n\nfor (let i = 0; i < priceArray.length; i++) {\n    hoursLabel = (\"0\" + i).slice(-2) +\":00 - \"+ (\"0\" + String(i+1)).slice(-2)+\":00\";\n    //hoursLabel = (\"0\" + i).slice(-2) +\":00\"\n    labels.push(hoursLabel)\n}\n\nm = {\n    \"series\": [\"Prices\"],\n    \"data\": [buyHours],\n    \"labels\":labels\n}\nreturn {payload:[m]};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 210,
+        "x": 510,
         "y": 200,
         "wires": [
             [
@@ -1044,7 +1101,7 @@
         "z": "9aeb46777da2b817",
         "name": "",
         "group": "f3bb1bf385ceb211",
-        "order": 10,
+        "order": 5,
         "width": 0,
         "height": 0,
         "label": "Buy hours",
@@ -1076,7 +1133,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 470,
+        "x": 770,
         "y": 200,
         "wires": [
             []
@@ -1093,7 +1150,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 210,
+        "x": 510,
         "y": 120,
         "wires": [
             [
@@ -1107,7 +1164,7 @@
         "z": "9aeb46777da2b817",
         "name": "",
         "group": "f3bb1bf385ceb211",
-        "order": 10,
+        "order": 6,
         "width": 0,
         "height": 0,
         "label": "Combined hours",
@@ -1139,7 +1196,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 490,
+        "x": 790,
         "y": 120,
         "wires": [
             []
@@ -1156,7 +1213,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 190,
+        "x": 490,
         "y": 240,
         "wires": [
             [
@@ -1169,7 +1226,7 @@
         "type": "ui_text",
         "z": "9aeb46777da2b817",
         "group": "f3bb1bf385ceb211",
-        "order": 4,
+        "order": 1,
         "width": 0,
         "height": 0,
         "name": "",
@@ -1177,8 +1234,81 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 460,
+        "x": 760,
         "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5507eca159989f14",
+        "type": "switch",
+        "z": "9aeb46777da2b817",
+        "name": "",
+        "property": "retrievePricesToday",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "0ae21520ce01dd11",
+                "0ed7fa1016760397",
+                "da6749e58481a394",
+                "7a2b24e12085c9b4",
+                "fe7044be6820aae1"
+            ],
+            [
+                "e48070146d064a15",
+                "faaf0faf7637dfb7"
+            ]
+        ]
+    },
+    {
+        "id": "e48070146d064a15",
+        "type": "function",
+        "z": "9aeb46777da2b817",
+        "name": "Create Chart data",
+        "func": "msg.payload = \"\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 300,
+        "wires": [
+            [
+                "beb863858b182545",
+                "319e4889580b5e3b",
+                "10d5871893641e66",
+                "b671f6303278ce1f",
+                "76b41fa2997b1668"
+            ]
+        ]
+    },
+    {
+        "id": "faaf0faf7637dfb7",
+        "type": "debug",
+        "z": "9aeb46777da2b817",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 340,
         "wires": []
     },
     {
@@ -1214,7 +1344,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
+        "x": 510,
         "y": 80,
         "wires": [
             [
@@ -1227,7 +1357,7 @@
         "type": "ui_text",
         "z": "922a5104f97edc2e",
         "group": "f3bb1bf385ceb211",
-        "order": 4,
+        "order": 2,
         "width": 0,
         "height": 0,
         "name": "",
@@ -1235,7 +1365,7 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 630,
+        "x": 710,
         "y": 80,
         "wires": []
     },
@@ -1243,10 +1373,10 @@
         "id": "af21320a12b626be",
         "type": "delay",
         "z": "922a5104f97edc2e",
-        "name": "Wait 1 minute to update",
+        "name": "Wait to update",
         "pauseType": "delay",
-        "timeout": "1",
-        "timeoutUnits": "minutes",
+        "timeout": "300",
+        "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
         "rateUnits": "second",
@@ -1256,12 +1386,39 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 190,
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "2925052b946804a9"
+            ]
+        ]
+    },
+    {
+        "id": "2925052b946804a9",
+        "type": "switch",
+        "z": "922a5104f97edc2e",
+        "name": "",
+        "property": "retrievePricesToday",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 350,
         "y": 80,
         "wires": [
             [
                 "2429bf541f8cd358"
-            ]
+            ],
+            []
         ]
     },
     {
@@ -1294,7 +1451,7 @@
         ],
         "out": [
             {
-                "x": 1000,
+                "x": 1020,
                 "y": 80,
                 "wires": [
                     {
@@ -1450,23 +1607,6 @@
         ]
     },
     {
-        "id": "9aac1cd0856418c8",
-        "type": "function",
-        "z": "27f7756ae6ed812f",
-        "name": "Save array (prices today)",
-        "func": "let priceArray=[];\nlet period = env.get(\"PERIOD\")\nfor (let i=0; i<24 ; i++){\n    let price = msg.payload.Publication_MarketDocument.TimeSeries[0].Period[0].Point[i][\"price.amount\"][0]/1000\n    price = parseFloat(price.toFixed(2))\n    priceArray[i]=price;\n}\nif (period == \"today\"){\n    global.set(\"pArray\", priceArray);\n    msg.payload= {\"day_ahead_price\": priceArray};\n} else if (period == \"tomorrow\") {\n    global.set(\"pArrayTomorrow\", priceArray);\n    msg.payload= { \"day_ahead_priceTomorrow\": priceArray};\n}\nreturn msg ;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 830,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "22a1dd77c8b42843",
         "type": "xml",
         "z": "27f7756ae6ed812f",
@@ -1480,6 +1620,23 @@
             [
                 "9aac1cd0856418c8"
             ]
+        ]
+    },
+    {
+        "id": "9aac1cd0856418c8",
+        "type": "function",
+        "z": "27f7756ae6ed812f",
+        "name": "Save array (prices today)",
+        "func": "let priceArray=[];\nlet period = env.get(\"PERIOD\")\nif (period == \"today\"){\n    global.set(\"retrievePricesToday\", false);\n} else {\n    global.set(\"retrievePricesTomorrow\", false);\n}\nglobal.set(\"pricesTomorrowError\", false)\nfor (let i=0; i<24 ; i++){\n    let price = \"\"\n    try{\n        price = msg.payload.Publication_MarketDocument.TimeSeries[0].Period[0].Point[i][\"price.amount\"][0]/1000\n    }\n    catch (error)\n    {\n        node.warn(\"No prices yet!\")\n        global.set(\"pricesTomorrowError\", true)\n        if (period == \"today\"){\n            global.set(\"pArray\", );\n            global.set(\"averagePrice\", );\n        } else if (period == \"tomorrow\") {\n            global.set(\"pArrayTomorrow\", );            \n            global.set(\"averagePriceTomorrow\", );\n        }\n        return msg;\n    }\n    price = parseFloat(price.toFixed(2))\n    priceArray[i]=price;\n}\nif (period == \"today\"){\n    global.set(\"pArray\", priceArray);\n    global.set(\"retrievePricesToday\", true);\n} else if (period == \"tomorrow\") {\n    global.set(\"pArrayTomorrow\", priceArray);\n    global.set(\"retrievePricesTomorrow\", true);\n}\nreturn msg ;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 80,
+        "wires": [
+            []
         ]
     },
     {
@@ -1523,7 +1680,7 @@
         "label": "Disable charge",
         "tooltip": "",
         "group": "125fd8f9b1f138e4",
-        "order": 0,
+        "order": 9,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -1598,7 +1755,11 @@
                 "y": 100,
                 "wires": [
                     {
-                        "id": "69160d1ee3667451",
+                        "id": "763fc88f9b14fdbd",
+                        "port": 0
+                    },
+                    {
+                        "id": "54365580f2766825",
                         "port": 0
                     }
                 ]
@@ -1732,9 +1893,7 @@
         "x": 500,
         "y": 80,
         "wires": [
-            [
-                "69160d1ee3667451"
-            ]
+            []
         ]
     },
     {
@@ -1759,9 +1918,7 @@
         "x": 500,
         "y": 160,
         "wires": [
-            [
-                "69160d1ee3667451"
-            ]
+            []
         ]
     },
     {
@@ -1878,23 +2035,6 @@
         ]
     },
     {
-        "id": "69160d1ee3667451",
-        "type": "function",
-        "z": "9d20c19d87019566",
-        "name": "Parse Int",
-        "func": "msg.payload = parseInt(msg.payload);\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 760,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "c05086a5b271a412",
         "type": "ui_group",
         "name": "Manual / auto control",
@@ -1911,11 +2051,24 @@
         "name": "Buy / Sell slider UI components",
         "info": "",
         "category": "",
-        "in": [],
+        "in": [
+            {
+                "x": 40,
+                "y": 240,
+                "wires": [
+                    {
+                        "id": "d14e3b17ab7af894"
+                    },
+                    {
+                        "id": "76468305637c5b44"
+                    }
+                ]
+            }
+        ],
         "out": [
             {
-                "x": 640,
-                "y": 40,
+                "x": 700,
+                "y": 120,
                 "wires": [
                     {
                         "id": "a00f407d1a9dce93",
@@ -1940,11 +2093,11 @@
         "label": "Buy",
         "tooltip": "",
         "group": "125fd8f9b1f138e4",
-        "order": 0,
+        "order": 7,
         "width": 0,
         "height": 0,
         "passthru": false,
-        "decouple": "false",
+        "decouple": "true",
         "topic": "payload",
         "topicType": "msg",
         "style": "",
@@ -1958,8 +2111,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 390,
-        "y": 80,
+        "x": 450,
+        "y": 160,
         "wires": [
             [
                 "7571d4ac094b02a5"
@@ -1974,7 +2127,7 @@
         "label": "Sell",
         "tooltip": "",
         "group": "125fd8f9b1f138e4",
-        "order": 0,
+        "order": 8,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -1992,8 +2145,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 390,
-        "y": 140,
+        "x": 450,
+        "y": 200,
         "wires": [
             [
                 "cd1081a02c09a690"
@@ -2011,7 +2164,8 @@
                 "p": "buyOption",
                 "pt": "global",
                 "to": "payload",
-                "tot": "msg"
+                "tot": "msg",
+                "dc": true
             }
         ],
         "action": "",
@@ -2019,8 +2173,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 730,
-        "y": 80,
+        "x": 790,
+        "y": 160,
         "wires": [
             []
         ]
@@ -2036,7 +2190,8 @@
                 "p": "sellOption",
                 "pt": "global",
                 "to": "payload",
-                "tot": "msg"
+                "tot": "msg",
+                "dc": true
             }
         ],
         "action": "",
@@ -2044,8 +2199,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 730,
-        "y": 140,
+        "x": 790,
+        "y": 200,
         "wires": [
             []
         ]
@@ -2067,8 +2222,8 @@
         "topic": "",
         "payload": "buyOption",
         "payloadType": "global",
-        "x": 200,
-        "y": 80,
+        "x": 260,
+        "y": 160,
         "wires": [
             [
                 "a00f407d1a9dce93"
@@ -2092,8 +2247,8 @@
         "topic": "",
         "payload": "sellOption",
         "payloadType": "global",
-        "x": 200,
-        "y": 140,
+        "x": 260,
+        "y": 200,
         "wires": [
             [
                 "7697ae0ad811490d"
@@ -2101,29 +2256,91 @@
         ]
     },
     {
-        "id": "c924e5cc0239c51d",
+        "id": "d14e3b17ab7af894",
+        "type": "change",
+        "z": "4e775634bf8788dd",
+        "name": "Get setting from global var",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "buyOption",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 220,
+        "y": 240,
+        "wires": [
+            [
+                "a00f407d1a9dce93"
+            ]
+        ]
+    },
+    {
+        "id": "76468305637c5b44",
+        "type": "change",
+        "z": "4e775634bf8788dd",
+        "name": "Get setting from global var",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "sellOption",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 220,
+        "y": 280,
+        "wires": [
+            [
+                "7697ae0ad811490d"
+            ]
+        ]
+    },
+    {
+        "id": "0c4339eefdbc3bdc",
         "type": "subflow",
-        "name": "Buy threshold UI component",
+        "name": "Set threshold UI components",
         "info": "",
         "category": "",
         "in": [
             {
-                "x": 40,
-                "y": 80,
+                "x": 80,
+                "y": 600,
                 "wires": [
                     {
-                        "id": "a5be48e1df0df24f"
+                        "id": "c329ccd09c48581b"
                     }
                 ]
             }
         ],
         "out": [
             {
-                "x": 500,
-                "y": 40,
+                "x": 2700,
+                "y": 460,
                 "wires": [
                     {
-                        "id": "c8472be928ea07db",
+                        "id": "f17305131c11c0eb",
+                        "port": 0
+                    },
+                    {
+                        "id": "a86741eb01f22285",
+                        "port": 0
+                    },
+                    {
+                        "id": "e71134c0d1c2f9cd",
                         "port": 0
                     }
                 ]
@@ -2134,46 +2351,81 @@
         "color": "#DDAA99"
     },
     {
-        "id": "c8472be928ea07db",
-        "type": "ui_numeric",
-        "z": "c924e5cc0239c51d",
-        "name": "",
-        "label": "Buy threshold",
-        "tooltip": "",
+        "id": "e2502c2a274a6062",
+        "type": "ui_text",
+        "z": "0c4339eefdbc3bdc",
         "group": "125fd8f9b1f138e4",
-        "order": 2,
+        "order": 4,
         "width": 0,
         "height": 0,
-        "wrap": false,
-        "passthru": true,
-        "topic": "payload",
-        "topicType": "msg",
-        "format": "{{value}}%",
-        "min": 0,
-        "max": "200",
-        "step": "1",
+        "name": "",
+        "label": "Buy threshold price",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
         "className": "",
-        "x": 360,
-        "y": 80,
+        "x": 2830,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "e37b9b76630dc856",
+        "type": "ui_text",
+        "z": "0c4339eefdbc3bdc",
+        "group": "125fd8f9b1f138e4",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Sell threshold price",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 2850,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "79c953b09eb787e5",
+        "type": "switch",
+        "z": "0c4339eefdbc3bdc",
+        "name": "lowThresholdStaticEnabled?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 960,
+        "y": 480,
         "wires": [
             [
-                "94fc417fd3cec28b",
-                "a86741eb01f22285"
+                "7e8b1d2784650ec5"
+            ],
+            [
+                "34a2a7dfa7413b3d"
             ]
         ]
     },
     {
-        "id": "94fc417fd3cec28b",
+        "id": "e71e36267b05e34a",
         "type": "change",
-        "z": "c924e5cc0239c51d",
-        "name": "Set global var lowThreshold",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Get lowThresholdStaticEnabled",
         "rules": [
             {
                 "t": "set",
-                "p": "lowThreshold",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
+                "p": "payload",
+                "pt": "msg",
+                "to": "lowThresholdStaticEnabled",
+                "tot": "global",
+                "dc": true
             }
         ],
         "action": "",
@@ -2181,42 +2433,141 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 600,
-        "y": 80,
+        "x": 670,
+        "y": 480,
+        "wires": [
+            [
+                "79c953b09eb787e5"
+            ]
+        ]
+    },
+    {
+        "id": "798001c9b2bfc1de",
+        "type": "change",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Get lowThresholdStaticEnabled",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "lowThresholdStaticEnabled",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 660,
+        "wires": [
+            [
+                "bf6f8c7b28d83458"
+            ]
+        ]
+    },
+    {
+        "id": "bf6f8c7b28d83458",
+        "type": "ui_switch",
+        "z": "0c4339eefdbc3bdc",
+        "name": "",
+        "label": "Buy threshold static?",
+        "tooltip": "",
+        "group": "125fd8f9b1f138e4",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 960,
+        "y": 660,
+        "wires": [
+            [
+                "f17305131c11c0eb"
+            ]
+        ]
+    },
+    {
+        "id": "f17305131c11c0eb",
+        "type": "change",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Set global var lowThresholdStaticEnabled",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lowThresholdStaticEnabled",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1340,
+        "y": 660,
         "wires": [
             []
         ]
     },
     {
-        "id": "e2502c2a274a6062",
-        "type": "ui_text",
-        "z": "c924e5cc0239c51d",
+        "id": "92489918bd2eb0df",
+        "type": "ui_text_input",
+        "z": "0c4339eefdbc3bdc",
+        "name": "",
+        "label": "Buy threshold static",
+        "tooltip": "",
         "group": "125fd8f9b1f138e4",
-        "order": 4,
+        "order": 2,
         "width": 0,
         "height": 0,
-        "name": "",
-        "label": "Buy threshold  ",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
         "className": "",
-        "x": 840,
-        "y": 120,
-        "wires": []
+        "topicType": "msg",
+        "x": 1600,
+        "y": 540,
+        "wires": [
+            [
+                "5fd1d73c195141c0",
+                "e71134c0d1c2f9cd"
+            ]
+        ]
     },
     {
-        "id": "a86741eb01f22285",
+        "id": "e71134c0d1c2f9cd",
         "type": "function",
-        "z": "c924e5cc0239c51d",
-        "name": "Calculate buy price",
-        "func": "let averagePrice = global.get(\"averagePrice\");\nlet lowThreshold = msg.payload\nlet buyPrice = averagePrice*(lowThreshold/100)\nbuyPrice = buyPrice.toFixed(2);\nmsg.payload = \"€\" + buyPrice\nreturn msg;",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Calculate buy price (static)",
+        "func": "let buyPrice = global.get(\"lowThresholdStatic\");\nbuyPrice = buyPrice.toFixed(3);\nmsg.payload = \"€\" + buyPrice\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 120,
+        "x": 2500,
+        "y": 540,
         "wires": [
             [
                 "e2502c2a274a6062"
@@ -2224,18 +2575,189 @@
         ]
     },
     {
-        "id": "a5be48e1df0df24f",
+        "id": "5fd1d73c195141c0",
+        "type": "change",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Set global var lowThresholdStatic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lowThresholdStatic",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1880,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "34a2a7dfa7413b3d",
+        "type": "change",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Get lowThresholdStatic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "lowThresholdStatic",
+                "tot": "global",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1290,
+        "y": 540,
+        "wires": [
+            [
+                "92489918bd2eb0df"
+            ]
+        ]
+    },
+    {
+        "id": "c8472be928ea07db",
+        "type": "ui_numeric",
+        "z": "0c4339eefdbc3bdc",
+        "name": "",
+        "label": "Buy threshold relative",
+        "tooltip": "",
+        "group": "125fd8f9b1f138e4",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": true,
+        "topic": "payload",
+        "topicType": "msg",
+        "format": "{{value}}%",
+        "min": 0,
+        "max": "100",
+        "step": "1",
+        "className": "",
+        "x": 1600,
+        "y": 480,
+        "wires": [
+            [
+                "94fc417fd3cec28b"
+            ]
+        ]
+    },
+    {
+        "id": "94fc417fd3cec28b",
+        "type": "change",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Set global var lowThreshold",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lowThreshold",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "enable",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1860,
+        "y": 480,
+        "wires": [
+            [
+                "b0042ddb64480cd3"
+            ]
+        ]
+    },
+    {
+        "id": "a86741eb01f22285",
         "type": "function",
-        "z": "c924e5cc0239c51d",
-        "name": "Load Setting",
-        "func": "msg.payload = parseInt(global.get(\"lowThreshold\"))\nreturn msg;",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Calculate buy price",
+        "func": "let averagePrice = global.get(\"averagePrice\");\nlet lowThreshold = global.get(\"lowThreshold\");\nlet buyPrice = averagePrice*(lowThreshold/100)\nbuyPrice = buyPrice.toFixed(3);\nmsg.payload = \"€\" + buyPrice\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 170,
-        "y": 80,
+        "x": 2470,
+        "y": 420,
+        "wires": [
+            [
+                "e2502c2a274a6062"
+            ]
+        ]
+    },
+    {
+        "id": "b0042ddb64480cd3",
+        "type": "switch",
+        "z": "0c4339eefdbc3bdc",
+        "name": "lowThresholdStaticEnabled ?",
+        "property": "lowThresholdStaticEnabled",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2180,
+        "y": 420,
+        "wires": [
+            [
+                "a86741eb01f22285"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7e8b1d2784650ec5",
+        "type": "change",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Get lowThreshold",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "lowThreshold",
+                "tot": "global",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1270,
+        "y": 480,
         "wires": [
             [
                 "c8472be928ea07db"
@@ -2243,47 +2765,43 @@
         ]
     },
     {
-        "id": "d044b83b45d931ad",
-        "type": "subflow",
-        "name": "Sell threshold UI component",
-        "info": "",
-        "category": "",
-        "in": [
+        "id": "7e7bb95b355c20ec",
+        "type": "switch",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Calculate price",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
             {
-                "x": 40,
-                "y": 120,
-                "wires": [
-                    {
-                        "id": "bd4ea4e22573a6b5"
-                    }
-                ]
+                "t": "false"
+            },
+            {
+                "t": "true"
             }
         ],
-        "out": [
-            {
-                "x": 560,
-                "y": 160,
-                "wires": [
-                    {
-                        "id": "9539306e6f8b53bb",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#DDAA99"
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1260,
+        "y": 600,
+        "wires": [
+            [
+                "a86741eb01f22285"
+            ],
+            [
+                "e71134c0d1c2f9cd"
+            ]
+        ]
     },
     {
-        "id": "9539306e6f8b53bb",
+        "id": "6606e33e7ce9fae3",
         "type": "ui_numeric",
-        "z": "d044b83b45d931ad",
+        "z": "0c4339eefdbc3bdc",
         "name": "",
-        "label": "Sell threshold",
+        "label": "Sell threshold relative",
         "tooltip": "",
         "group": "125fd8f9b1f138e4",
-        "order": 2,
+        "order": 3,
         "width": 0,
         "height": 0,
         "wrap": false,
@@ -2295,19 +2813,18 @@
         "max": "200",
         "step": "1",
         "className": "",
-        "x": 360,
-        "y": 120,
+        "x": 940,
+        "y": 400,
         "wires": [
             [
-                "91b630cbc0faeee8",
-                "bd78520f8205944b"
+                "f41aed5af6b48e47"
             ]
         ]
     },
     {
-        "id": "bd78520f8205944b",
+        "id": "f41aed5af6b48e47",
         "type": "change",
-        "z": "d044b83b45d931ad",
+        "z": "0c4339eefdbc3bdc",
         "name": "Set global var highThreshold",
         "rules": [
             {
@@ -2315,7 +2832,8 @@
                 "p": "highThreshold",
                 "pt": "global",
                 "to": "payload",
-                "tot": "msg"
+                "tot": "msg",
+                "dc": true
             }
         ],
         "action": "",
@@ -2323,65 +2841,126 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 660,
-        "y": 120,
+        "x": 1300,
+        "y": 400,
+        "wires": [
+            [
+                "40427afc4cbd8e45"
+            ]
+        ]
+    },
+    {
+        "id": "40427afc4cbd8e45",
+        "type": "function",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Calculate sell price",
+        "func": "let averagePrice = global.get(\"averagePrice\");\nlet highThreshold = global.get(\"highThreshold\");\nlet sellPrice = averagePrice*(highThreshold/100)\nsellPrice = sellPrice.toFixed(3);\nmsg.payload = \"€\" + sellPrice\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1590,
+        "y": 400,
+        "wires": [
+            [
+                "e37b9b76630dc856"
+            ]
+        ]
+    },
+    {
+        "id": "3e5dbab99bfc83a2",
+        "type": "change",
+        "z": "0c4339eefdbc3bdc",
+        "name": "Get highThreshold",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "highThreshold",
+                "tot": "global",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 400,
+        "wires": [
+            [
+                "6606e33e7ce9fae3"
+            ]
+        ]
+    },
+    {
+        "id": "67a07877777ddf30",
+        "type": "delay",
+        "z": "0c4339eefdbc3bdc",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 280,
+        "y": 720,
+        "wires": [
+            [
+                "c329ccd09c48581b"
+            ]
+        ]
+    },
+    {
+        "id": "c329ccd09c48581b",
+        "type": "switch",
+        "z": "0c4339eefdbc3bdc",
+        "name": "retrievePricesToday true?",
+        "property": "retrievePricesToday",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 290,
+        "y": 600,
+        "wires": [
+            [
+                "3e5dbab99bfc83a2",
+                "e71e36267b05e34a",
+                "7e7bb95b355c20ec",
+                "798001c9b2bfc1de"
+            ],
+            [
+                "67a07877777ddf30"
+            ]
+        ]
+    },
+    {
+        "id": "92b187aaf8d6e986",
+        "type": "junction",
+        "z": "0c4339eefdbc3bdc",
+        "x": 1341.09375,
+        "y": 587.8571428571429,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "91b630cbc0faeee8",
-        "type": "function",
-        "z": "d044b83b45d931ad",
-        "name": "Calculate sell price",
-        "func": "let averagePrice = global.get(\"averagePrice\");\nlet highThreshold = msg.payload\nlet sellPrice = averagePrice*(highThreshold/100)\nsellPrice = sellPrice.toFixed(2);\nmsg.payload = \"€\" + sellPrice\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 630,
-        "y": 80,
-        "wires": [
-            [
-                "eed6dedec1b78724"
-            ]
-        ]
-    },
-    {
-        "id": "eed6dedec1b78724",
-        "type": "ui_text",
-        "z": "d044b83b45d931ad",
-        "group": "125fd8f9b1f138e4",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Sell threshold ",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 900,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "bd4ea4e22573a6b5",
-        "type": "function",
-        "z": "d044b83b45d931ad",
-        "name": "Load Setting",
-        "func": "msg.payload = parseInt(global.get(\"highThreshold\"))\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 170,
-        "y": 120,
-        "wires": [
-            [
-                "9539306e6f8b53bb"
-            ]
         ]
     },
     {
@@ -2402,118 +2981,6 @@
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
-    },
-    {
-        "id": "0c4339eefdbc3bdc",
-        "type": "subflow",
-        "name": "Set threshold UI components",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 260,
-                "y": 160,
-                "wires": [
-                    {
-                        "id": "f174cf4b7a9e656a"
-                    },
-                    {
-                        "id": "6608049a5cf10672"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 680,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "f174cf4b7a9e656a",
-                        "port": 0
-                    },
-                    {
-                        "id": "6608049a5cf10672",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#DDAA99"
-    },
-    {
-        "id": "b9fe4e53132e54fc",
-        "type": "inject",
-        "z": "0c4339eefdbc3bdc",
-        "name": "Get sell threshold",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "5",
-        "topic": "",
-        "payload": "highThreshold",
-        "payloadType": "global",
-        "x": 190,
-        "y": 80,
-        "wires": [
-            [
-                "f174cf4b7a9e656a"
-            ]
-        ]
-    },
-    {
-        "id": "eff65109376b77f9",
-        "type": "inject",
-        "z": "0c4339eefdbc3bdc",
-        "name": "Get buy threshold",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "5",
-        "topic": "",
-        "payload": "lowThreshold",
-        "payloadType": "global",
-        "x": 190,
-        "y": 120,
-        "wires": [
-            [
-                "6608049a5cf10672"
-            ]
-        ]
-    },
-    {
-        "id": "f174cf4b7a9e656a",
-        "type": "subflow:d044b83b45d931ad",
-        "z": "0c4339eefdbc3bdc",
-        "name": "Sell threshold UI component",
-        "x": 440,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6608049a5cf10672",
-        "type": "subflow:c924e5cc0239c51d",
-        "z": "0c4339eefdbc3bdc",
-        "name": "Buy threshold UI component",
-        "x": 440,
-        "y": 120,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "69b0f382c122b574",
@@ -2625,7 +3092,7 @@
         },
         "initial": "",
         "name": "",
-        "x": 560,
+        "x": 900,
         "y": 1440,
         "wires": []
     },
@@ -2642,7 +3109,8 @@
             "52a2658ea031d9d2",
             "cf31648bdaacbbf0",
             "3567fa9da71a609a",
-            "52a795e99e561568"
+            "52a795e99e561568",
+            "28d5a938750273d8"
         ],
         "x": 535,
         "y": 260,
@@ -2661,9 +3129,10 @@
             "52a2658ea031d9d2",
             "cf31648bdaacbbf0",
             "3567fa9da71a609a",
-            "52a795e99e561568"
+            "52a795e99e561568",
+            "28d5a938750273d8"
         ],
-        "x": 415,
+        "x": 755,
         "y": 1540,
         "wires": []
     },
@@ -2730,7 +3199,7 @@
         "repeat": "",
         "crontab": "01 00 * * *",
         "once": true,
-        "onceDelay": "1",
+        "onceDelay": "0.5",
         "topic": "",
         "payload": "",
         "payloadType": "date",
@@ -2738,7 +3207,8 @@
         "y": 640,
         "wires": [
             [
-                "c104916623a48043"
+                "c104916623a48043",
+                "174bed3a2d9fc808"
             ]
         ]
     },
@@ -2768,31 +3238,6 @@
         ]
     },
     {
-        "id": "4694a840a6542cd5",
-        "type": "inject",
-        "z": "69b0f382c122b574",
-        "name": "Run at 00:01",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "01 00 * * *",
-        "once": true,
-        "onceDelay": "10",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 220,
-        "y": 760,
-        "wires": [
-            [
-                "5120d4c23df11a27"
-            ]
-        ]
-    },
-    {
         "id": "b9d09a50cfa4ef57",
         "type": "link in",
         "z": "69b0f382c122b574",
@@ -2809,22 +3254,8 @@
         "y": 560,
         "wires": [
             [
-                "5120d4c23df11a27",
-                "c94f3f63c916b63c"
-            ]
-        ]
-    },
-    {
-        "id": "5674540b915afa3a",
-        "type": "ui_ui_control",
-        "z": "69b0f382c122b574",
-        "name": "Refresh on opening page",
-        "events": "all",
-        "x": 150,
-        "y": 520,
-        "wires": [
-            [
-                "c104916623a48043",
+                "c94f3f63c916b63c",
+                "4f4ed1bd529a05c6",
                 "5120d4c23df11a27"
             ]
         ]
@@ -2842,16 +3273,15 @@
         "repeat": "",
         "crontab": "00 15 * * *",
         "once": true,
-        "onceDelay": "1",
+        "onceDelay": "0.1",
         "topic": "",
         "payload": "",
         "payloadType": "date",
         "x": 220,
-        "y": 840,
+        "y": 820,
         "wires": [
             [
-                "e625d3e1de7bf5cd",
-                "c94f3f63c916b63c"
+                "e625d3e1de7bf5cd"
             ]
         ]
     },
@@ -2863,16 +3293,6 @@
         "info": "",
         "x": 160,
         "y": 600,
-        "wires": []
-    },
-    {
-        "id": "b1baaa140852f786",
-        "type": "comment",
-        "z": "69b0f382c122b574",
-        "name": "Fill charts with data",
-        "info": "",
-        "x": 150,
-        "y": 720,
         "wires": []
     },
     {
@@ -2892,7 +3312,7 @@
         "name": "Retrieve prices tomorrow",
         "info": "",
         "x": 170,
-        "y": 800,
+        "y": 780,
         "wires": []
     },
     {
@@ -2907,7 +3327,7 @@
         "gtype": "gage",
         "title": "Grid setpoint",
         "label": "Watt",
-        "format": "{{value}} Watt",
+        "format": "{{value | number:0}} Watt",
         "min": "-3000",
         "max": "3000",
         "colors": [
@@ -2917,8 +3337,9 @@
         ],
         "seg1": "",
         "seg2": "",
+        "diff": false,
         "className": "",
-        "x": 590,
+        "x": 810,
         "y": 960,
         "wires": []
     },
@@ -3038,7 +3459,7 @@
         "gtype": "gage",
         "title": "Battery power",
         "label": "Watt",
-        "format": "{{value}} Watt",
+        "format": "{{value | number:0}} Watt",
         "min": "-3000",
         "max": "3000",
         "colors": [
@@ -3048,8 +3469,9 @@
         ],
         "seg1": "",
         "seg2": "",
+        "diff": false,
         "className": "",
-        "x": 600,
+        "x": 820,
         "y": 1020,
         "wires": []
     },
@@ -3329,7 +3751,7 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 590,
+        "x": 810,
         "y": 1200,
         "wires": []
     },
@@ -3340,7 +3762,7 @@
         "name": "Tariffs and charts",
         "info": "",
         "x": 80,
-        "y": 480,
+        "y": 520,
         "wires": []
     },
     {
@@ -3349,8 +3771,8 @@
         "z": "69b0f382c122b574",
         "name": "Get state info",
         "info": "",
-        "x": 70,
-        "y": 880,
+        "x": 130,
+        "y": 900,
         "wires": []
     },
     {
@@ -3359,7 +3781,7 @@
         "z": "69b0f382c122b574",
         "name": "UI Control",
         "events": "all",
-        "x": 470,
+        "x": 810,
         "y": 1500,
         "wires": [
             []
@@ -3370,7 +3792,7 @@
         "type": "subflow:0c4339eefdbc3bdc",
         "z": "69b0f382c122b574",
         "name": "Set threshold components",
-        "x": 210,
+        "x": 300,
         "y": 260,
         "wires": [
             [
@@ -3383,7 +3805,7 @@
         "type": "subflow:4e775634bf8788dd",
         "z": "69b0f382c122b574",
         "name": "Buy / Sell option slider components",
-        "x": 240,
+        "x": 320,
         "y": 340,
         "wires": [
             [
@@ -3445,7 +3867,9 @@
         "x": 510,
         "y": 640,
         "wires": [
-            []
+            [
+                "5120d4c23df11a27"
+            ]
         ]
     },
     {
@@ -3465,9 +3889,11 @@
             }
         ],
         "x": 510,
-        "y": 840,
+        "y": 820,
         "wires": [
-            []
+            [
+                "c94f3f63c916b63c"
+            ]
         ]
     },
     {
@@ -3484,8 +3910,8 @@
         "type": "subflow:9aeb46777da2b817",
         "z": "69b0f382c122b574",
         "name": "",
-        "x": 460,
-        "y": 760,
+        "x": 820,
+        "y": 640,
         "wires": []
     },
     {
@@ -3493,8 +3919,8 @@
         "type": "subflow:9e692a50a8bce875",
         "z": "69b0f382c122b574",
         "name": "",
-        "x": 490,
-        "y": 880,
+        "x": 850,
+        "y": 820,
         "wires": []
     },
     {
@@ -3504,7 +3930,11 @@
         "name": "Get Min. SoC",
         "x": 600,
         "y": 1080,
-        "wires": []
+        "wires": [
+            [
+                "ff8037921920ba49"
+            ]
+        ]
     },
     {
         "id": "b965849c194fda8a",
@@ -3513,7 +3943,11 @@
         "name": "",
         "x": 580,
         "y": 1140,
-        "wires": []
+        "wires": [
+            [
+                "42623ea064f85308"
+            ]
+        ]
     },
     {
         "id": "cbaab3ed51ccc57e",
@@ -3558,12 +3992,11 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 280,
-        "y": 880,
+        "x": 220,
+        "y": 860,
         "wires": [
             [
-                "e625d3e1de7bf5cd",
-                "c94f3f63c916b63c"
+                "e625d3e1de7bf5cd"
             ]
         ]
     },
@@ -4424,10 +4857,10 @@
                 "p": "payload"
             }
         ],
-        "repeat": "",
-        "crontab": "01 00 * * *",
-        "once": false,
-        "onceDelay": "1",
+        "repeat": "2.5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0,5",
         "topic": "",
         "payload": "",
         "payloadType": "date",
@@ -4444,13 +4877,13 @@
         "type": "function",
         "z": "69b0f382c122b574",
         "name": "Init flow",
-        "func": "global.set(\"highThreshold\", \"140\")\nglobal.set(\"lowThreshold\", \"60\");\nglobal.set(\"defaultGridSetpoint\", \"30\");\nglobal.set(\"chargeGridSetpoint\", \"3000\");\nglobal.set(\"dischargeGridSetpoint\", \"-3000\");\nmsg.payload = \"\"\nreturn msg;",
+        "func": "if (!global.get(\"highThreshold\")) {\n    global.set(\"highThreshold\", 140)\n}\nif (!global.get(\"lowThreshold\")) {\n    global.set(\"lowThreshold\", 60)\n}\n\nif (!global.get(\"defaultGridSetpoint\")) {\n    global.set(\"defaultGridSetpoint\", 30)\n}\n\nif (!global.get(\"chargeGridSetpoint\")) {\n    global.set(\"defaultGridSetpoint\", 3000)\n}\n\nif (!global.get(\"dischargeGridSetpoint\")) {\n    global.set(\"dischargeGridSetpoint\", -3000)\n}\n\nif (!global.get(\"lowThresholdStaticEnabled\")) {\n    global.set(\"lowThresholdStaticEnabled\", false)\n}\n\nif (!global.get(\"lowThresholdStatic\")) {\n    global.set(\"lowThresholdStatic\", 0.01)\n}\n\nif (!global.get(\"retrievePricesToday\")) {\n    global.set(\"retrievePricesToday\", false)\n}\n\nif (!global.get(\"retrievePricesTomorrow\")) {\n    global.set(\"retrievePricesTomorrow\", false)\n}\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 460,
+        "x": 580,
         "y": 80,
         "wires": [
             [
@@ -4468,9 +4901,10 @@
             "52a2658ea031d9d2",
             "b9d09a50cfa4ef57",
             "3567fa9da71a609a",
-            "52a795e99e561568"
+            "52a795e99e561568",
+            "28d5a938750273d8"
         ],
-        "x": 625,
+        "x": 915,
         "y": 80,
         "wires": []
     },
@@ -4662,12 +5096,164 @@
             "36f73bc464f1bd65",
             "da7f48834e60fcdc"
         ],
-        "x": 45,
+        "x": 115,
         "y": 260,
         "wires": [
             [
                 "c9425e6077a55ae7"
             ]
+        ]
+    },
+    {
+        "id": "5674540b915afa3a",
+        "type": "ui_ui_control",
+        "z": "69b0f382c122b574",
+        "name": "Refresh on opening page",
+        "events": "all",
+        "x": 630,
+        "y": 120,
+        "wires": [
+            [
+                "36f73bc464f1bd65"
+            ]
+        ]
+    },
+    {
+        "id": "28d5a938750273d8",
+        "type": "link in",
+        "z": "69b0f382c122b574",
+        "name": "Conditions changed sell",
+        "links": [
+            "441f94a47c2e47d6",
+            "f1773a22de7aef03",
+            "dc12facd8d5f36aa",
+            "68f25ff0f858052a",
+            "36f73bc464f1bd65",
+            "da7f48834e60fcdc"
+        ],
+        "x": 115,
+        "y": 340,
+        "wires": [
+            [
+                "7cb962107629c7ca"
+            ]
+        ]
+    },
+    {
+        "id": "ff8037921920ba49",
+        "type": "ui_text",
+        "z": "69b0f382c122b574",
+        "group": "444dc33479b4fd26",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Min. SoC",
+        "format": "{{msg.payload | number:2}}%",
+        "layout": "row-spread",
+        "className": "",
+        "x": 800,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "42623ea064f85308",
+        "type": "ui_gauge",
+        "z": "69b0f382c122b574",
+        "name": "",
+        "group": "444dc33479b4fd26",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "SoC",
+        "label": "%",
+        "format": "{{value}}%",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#c83838",
+            "#e6e600",
+            "#00a600"
+        ],
+        "seg1": "20",
+        "seg2": "40",
+        "className": "",
+        "x": 790,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "51c3ebbe51d23dea",
+        "type": "ui_button",
+        "z": "69b0f382c122b574",
+        "name": "",
+        "group": "f3bb1bf385ceb211",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Retrieve prices ",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 220,
+        "y": 720,
+        "wires": [
+            [
+                "c104916623a48043"
+            ]
+        ]
+    },
+    {
+        "id": "d1f34a659aab4d99",
+        "type": "ui_button",
+        "z": "69b0f382c122b574",
+        "name": "",
+        "group": "125fd8f9b1f138e4",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Refresh",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 580,
+        "y": 160,
+        "wires": [
+            [
+                "36f73bc464f1bd65"
+            ]
+        ]
+    },
+    {
+        "id": "174bed3a2d9fc808",
+        "type": "function",
+        "z": "69b0f382c122b574",
+        "name": "Reset prices tomorrow",
+        "func": "global.set(\"retrievePricesTomorrow\", false)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 600,
+        "wires": [
+            []
         ]
     },
     {
