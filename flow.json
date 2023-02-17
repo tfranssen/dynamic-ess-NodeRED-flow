@@ -1568,7 +1568,7 @@
         "type": "function",
         "z": "27f7756ae6ed812f",
         "name": "Create URL",
-        "func": "const dateDay = new Date()\nlet period = env.get(\"PERIOD\")\nif (period == \"tomorrow\") {\n    dateDay.setDate(dateDay.getDate() + 1)\n}\nlet date = (\"0\" + dateDay.getDate()).slice(-2)\nlet month = (\"0\" + (dateDay.getMonth() + 1)).slice(-2);\nlet year = dateDay.getFullYear();\nlet datesSring = year+month+date;\nlet domain = env.get(\"DOMAIN\");\nlet entsoeKey = env.get(\"KEY\");\n\nlet urlAddr=\"https://transparency.entsoe.eu/api?securityToken=\"+entsoeKey+\"&documentType=A44&in_Domain=\"+domain+\"&out_Domain=\"+domain+\"&periodStart=\"+datesSring+\"0000&periodEnd=\"+datesSring+\"2300\"\nmsg.url=urlAddr;\nreturn msg;",
+        "func": "const dateDay = new Date()\nlet period = env.get(\"PERIOD\")\nif (period == \"tomorrow\") {\n    dateDay.setDate(dateDay.getDate() + 1)\n}\nlet date = (\"0\" + dateDay.getDate()).slice(-2)\nlet month = (\"0\" + (dateDay.getMonth() + 1)).slice(-2);\nlet year = dateDay.getFullYear();\nlet datesSring = year+month+date;\nlet domain = env.get(\"DOMAIN\");\nlet entsoeKey = env.get(\"KEY\");\n\nlet urlAddr=\"https://web-api.tp.entsoe.eu/api?securityToken=\"+entsoeKey+\"&documentType=A44&in_Domain=\"+domain+\"&out_Domain=\"+domain+\"&periodStart=\"+datesSring+\"0000&periodEnd=\"+datesSring+\"2300\"\nmsg.url=urlAddr;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
